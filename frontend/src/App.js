@@ -26,7 +26,7 @@ function App() {
   })
   useEffect (() => {
     refreshList();
-  })
+  },[])
 
   const refreshList = () => {
     axios
