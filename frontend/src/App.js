@@ -3,19 +3,6 @@ import Modal from "./components/Modal";
 import axios from "axios";
 
 function App() {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     viewCompleted: false,
-  //     todoList: [],
-  //     modal: false,
-  //     activeItem: {
-  //       title: "",
-  //       description: "",
-  //       completed: false,
-  //     },
-  //   };
-  // }
   const [viewCompleted, setCompleted] = useState(false);
   const [todoList, setTodoList] = useState([]);
   const [modal, setModal] = useState(false);
@@ -31,7 +18,6 @@ function App() {
   const refreshList = () => {
     axios
       .get("/api/todos/")
-      // .then((res) => this.setState({ todoList: res.data }))
       .then((res) => setTodoList(res.data))
       .catch((err) => console.log(err));
   };
@@ -65,22 +51,18 @@ function App() {
     setActiveItem(item);
     setModal(!modal);
 
-    // this.setState({ activeItem: item, modal: !this.state.modal });
   };
 
   const editItem = (item) => {
-    // this.setState({ activeItem: item, modal: !this.state.modal });
     setActiveItem(item);
     setModal(!modal);
   };
 
   const displayCompleted = (status) => {
     if (status) {
-      // return this.setState({ viewCompleted: true });
       return setCompleted(true);
     }
     return setCompleted(false);
-    // return this.setState({ viewCompleted: false });
   };
 
   const renderTabList = () => {
